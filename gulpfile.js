@@ -1,14 +1,22 @@
 var gulp = require('gulp');
+var concat = require('gulp-concat');
 
-//Your First Task
+//Css Task
+gulp.task('css', function() {
 
-gulp.task('moh', function() {
-    // return gulp.src('project/index.html')
-    // return gulp.src('project/*.html')
-    // return gulp.src('project/*.*')
-    return gulp.src(['project/index.html', 'project/main.css'])
+    return gulp.src('project/*.css')
+        .pipe(concat('main.css'))
+        .pipe(gulp.dest('dist'))
 
-    // .pipe(gulp.dest('/dist'))
-    .pipe(gulp.dest('/dist/copy'))
+});
+
+
+
+//Js Task
+gulp.task('scripts', function() {
+
+    return gulp.src('project/*.js')
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('dist'))
 
 })
