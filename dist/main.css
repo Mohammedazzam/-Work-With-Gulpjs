@@ -1,5 +1,9 @@
 .content {
     height: 100px;
+    opacity: 0.5;
+    transform: rotate(60deg);
+    display: flex;
+    transition: all.3s ease-in-out;
 }
 .footer {
     height: 100px;
