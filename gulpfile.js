@@ -1,16 +1,19 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var prefix = require('gulp-autoprefixer');
+var gulp = require('gulp'),
+    concat = require('gulp-concat'),
+    prefix = require('gulp-autoprefixer'),
+    sass = require('gulp-sass')
+ 
 
 
 //Css Task
 gulp.task('css', function() {
 
-    return gulp.src('project/*.css')
+    return gulp.src('project/css/main.scss')
+        .pipe(sass({outputStyle: 'compressed'}))
         .pipe(prefix())
         // .pipe(prefix('last 2 versions'))
-        .pipe(concat('main.css'))
-        .pipe(gulp.dest('dist'))
+        .pipe(concat('test.css'))
+        .pipe(gulp.dest('dist/css'))
 
 });
 
