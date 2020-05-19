@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
     pug = require('gulp-pug'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    sourcemaps = require('gulp-sourcemaps')
 
 
 //Html Task
@@ -20,10 +21,12 @@ gulp.task('html', function() {
 gulp.task('css', function() {
 
     return gulp.src('project/css/main.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass({ outputStyle: 'compressed' }))
         .pipe(prefix())
         // .pipe(prefix('last 2 versions'))
         .pipe(concat('main.css'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/css'))
         .pipe(livereload());
 
