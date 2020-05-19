@@ -7,7 +7,6 @@ var gulp = require('gulp'),
 
 //Html Task
 gulp.task('html', function() {
-    require('./server.js');
     return gulp.src('project/index.pug')
         .pipe(pug({ pretty: true }))
         .pipe(gulp.dest('dist'))
@@ -21,7 +20,7 @@ gulp.task('css', function() {
         .pipe(sass({ outputStyle: 'compressed' }))
         .pipe(prefix())
         // .pipe(prefix('last 2 versions'))
-        .pipe(concat('test.css'))
+        .pipe(concat('main.css'))
         .pipe(gulp.dest('dist/css'))
 
 });
@@ -35,4 +34,12 @@ gulp.task('scripts', function() {
         .pipe(concat('all.js'))
         .pipe(gulp.dest('dist'))
 
+})
+
+//Watch Task
+
+gulp.task('watch', function() {
+    require('./server.js');
+    gulp.watch('project/index.pug', ['html']);
+    gulp.watch('project/css/main.scss', ['css'])
 })
