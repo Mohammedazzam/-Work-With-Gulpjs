@@ -4,8 +4,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     pug = require('gulp-pug'),
     livereload = require('gulp-livereload'),
-    sourcemaps = require('gulp-sourcemaps')
-
+    sourcemaps = require('gulp-sourcemaps'),
+    uglify = require('gulp-uglify')
 
 //Html Task
 gulp.task('html', function() {
@@ -36,11 +36,12 @@ gulp.task('css', function() {
 
 
 //Js Task
-gulp.task('scripts', function() {
+gulp.task('js', function() {
 
-    return gulp.src('project/*.js')
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('dist'))
+    return gulp.src('project/js/*.js')
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'))
         .pipe(livereload());
 
 
