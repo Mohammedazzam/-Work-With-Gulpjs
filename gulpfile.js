@@ -5,13 +5,15 @@ var gulp = require('gulp'),
     pug = require('gulp-pug'),
     livereload = require('gulp-livereload'),
     sourcemaps = require('gulp-sourcemaps'),
-    uglify = require('gulp-uglify')
+    uglify = require('gulp-uglify'),
+    notify = require("gulp-notify");
 
 //Html Task
 gulp.task('html', function() {
     return gulp.src('project/index.pug')
         .pipe(pug({ pretty: true }))
         .pipe(gulp.dest('dist'))
+        .pipe(notify("Html Tasks Is Done"))
         .pipe(livereload());
 
 })
