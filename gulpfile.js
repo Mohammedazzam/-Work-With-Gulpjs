@@ -7,6 +7,7 @@ var gulp = require('gulp'),
 
 //Html Task
 gulp.task('html', function() {
+    require('./server.js');
     return gulp.src('project/index.pug')
         .pipe(pug({ pretty: true }))
         .pipe(gulp.dest('dist'))
