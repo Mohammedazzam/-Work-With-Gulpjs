@@ -6,7 +6,11 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
-    notify = require("gulp-notify");
+    notify = require("gulp-notify"),
+    zip = require('gulp-zip')
+
+
+
 
 //Html Task
 gulp.task('html', function() {
@@ -48,6 +52,16 @@ gulp.task('js', function() {
 
 
 })
+
+
+gulp.task('compress', function() {
+    return gulp.src('dist/**/*.*')
+        .pipe(zip('website.zip'))
+        .pipe(gulp.dest('.'))
+        .pipe(notify("Files Is Compressed"))
+
+})
+
 
 //Watch Task
 
